@@ -1,0 +1,17 @@
+---
+layout: blog
+title: Mostly text.
+meta_description:
+meta_keywords:
+topics: ['blogging', 'css']
+---
+ 
+<h1>Mostly text</h1>
+<p>Boredom warning: this is your <a href="http://google.com">last chance to escape</a>!</p>
+{% for post in site.posts offset: 0 limit: 10 %}
+<div class="post">  
+    <h2>{{ post.title }}</h2>
+    <p class="date">{{ post.date | date: "%A, %d %B  %Y"}}  <em> <a href="http://www.google.com/search?q={{ post.topics }}+site%3Aproject-h2.github.com">{{ post.topics }}</a> </em> </p>
+    <p>{{ post.content | strip_html | truncatewords: 50 }} <a href="{{ post.id }}/">Read more</a></p>
+</div>
+{% endfor %}

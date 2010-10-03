@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>{%if page.type != 'blog' %}project-h2: {% endif %}{% if page.title %}{{ page.title }}{% endif %}</title>
+    {% if page.meta_keywords %}<meta name="keywords" content="{{ page.meta_keywords }}" />{% endif %}
+    {% if page.meta_description %}<meta name="description" content="{{ page.meta_description }}" />{% endif %}
+    <meta name="author" content="project-h2" />
+
+    {% if page.type == 'blog' %}
+    <meta name="google-site-verification" content="X2ZzBfEZcBzsdkkbPU8--1gtF0d3QeeShiqWChC7F-w" />
+    {% endif %}
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <link href="css/project-h2.css" rel="stylesheet" media="screen, projection" type="text/css" />
+</head>
+<body {% if page.location %}id="{{ page.location }}"{% endif %}>
+<div class="wrapper">
+    <div class="wrap header">
+        <div class="logo">
+                <a href="http://project-h2.github.com/">project-h2</a>
+        </div>
+        <div id="menu" class="menu">
+        {{ post.type }}
+            <ul>
+                <li class="first about"><a href="http://project-h2.github.com/about/">About</a></li>
+                <li class="launches"><a href="http://project-h2.github.com/launches/">Launches</a></li>
+                <li class="blog"><a href="http://project-h2.github.com/blog">Blog</a></li>
+                <li class="archives last"><a href="http://project-h2.github.com/archives/">Blog Archives</a></li>
+            </ul>
+        </div>
+    </div><!-- ends .header -->
+
+    <div class="content">
+        {% if page.type == 'site' %}
+        <div class="intro">
+            <h1>For Your Information</h1>
+            <p>
+                Until we put up some interesting information here check the
+                <a href="http://github.com/project-h2/project-h2/wiki">wiki</a>
+            </p>
+        </div>
+        {% endif %}
+
+        {% if page.type == 'page' or page.type == 'blog' %}<div class="article">{% endif %}
+        {{ content }}
+        {% if page.type == 'page' or page.type == 'blog' %}</div>{% endif %}
+    </div><!-- ends .content -->
+
+    {% include footer.html %}
+</div><!-- ends .wrapper -->
+
+{% if page.type == 'blog' %}
+
+<script type="text/javascript">
+//<![CDATA[
+//put analytics and disqus for the blog here
+//]]>
+</script>
+{% endif %}
+    
+{% if page.type == 'site' or page.type == 'page' %}
+<script type="text/javascript">
+//<![CDATA[
+//put analytics for other pages here
+//]]>
+</script>
+{% endif %}
+</body>
+</html>
